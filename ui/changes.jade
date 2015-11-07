@@ -1,0 +1,31 @@
+html
+  head
+    link(type="text/css" rel="stylesheet" href="css/gia.ui.css")
+    link(type="text/css" rel="stylesheet" href="css/app.css")
+  body
+    div(ng-app="ClickLionDocsChanges").p-30
+      div(ng-controller="ChangesController")
+        table
+          thead
+            tr
+              th Element
+              th Url
+              th Section
+              th Article
+              th Content
+              th Fixed
+          tbody
+            tr(ng-repeat="item in data" ng-cloak)
+              td(ng-bind="item.element")
+              td(ng-bind="item.url")
+              td
+                a(ng-href="{{doc.root}}{{item.url}}#{'#{{item.section}}'}", ng-bind="item.section", target="_blank")
+              td
+                a(ng-href="{{doc.root}}{{item.url}}#{'#{{item.article}}'}", ng-bind="item.article", target="_blank")
+              td(ng-bind="item.newText")
+              td
+                a.bt.s(ng-click="done(item._id)" ng-cloak) ok
+    
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.js")
+    script(type="text/javascript" src="js/app.js")
